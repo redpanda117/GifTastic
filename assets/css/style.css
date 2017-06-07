@@ -1,0 +1,19 @@
+#title{
+	text-align: center;
+}
+p{
+	font-weight: bold;
+}
+h1{
+	color: white;
+}
+body{
+	background-image: url(../images/pic.png);
+	background-size: cover;
+}
+.form-group{
+	text-align:center; 
+}
+.animeShows{
+	margin: 5px;
+}
