@@ -57,7 +57,7 @@ function getGif(){
 //clearing out the last gif so current gif could fill it up without the old ones there. 
   $("#theGIF").empty();
 //the url to get gif to seach for the anime that was  pick and put it only show 10 results
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + userPick + "&api_key=dc6zaTOxFJmzC&limit=10";
+  var queryURL = "http://api.giphy.com/v1/gifs/search?q="+userPick+"&api_key=dc6zaTOxFJmzC&limit=10";
 
   $.ajax({
       url: queryURL,
