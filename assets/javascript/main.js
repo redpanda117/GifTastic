@@ -55,7 +55,7 @@ function getGif(){
 //specify the button that the usser pick to run that one not all of them
 	userPick = $(this).attr("data-name");
 //the url to get gif to seach for the anime that was  pick and put it only show 10 results
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q="+userPick+"&limit=10&api_key=dc6zaTOxFJmzC";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q="+userPick+"&limit=10&api_key=dc6zaTOxFJmzC";
 
   $.ajax({
       url: queryURL,
