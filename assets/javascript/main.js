@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-var anime = ["Kuroko no Basket","Black Butler","Attack on Titan","Assassination Classroom"];
+var anime = ["KUROKO NO BASKET","BLACK BUTLER","ATTACK ON TITAN","ASSASSINATION CLASSROOM"];
 
 buttonMaking();
 function buttonMaking(){
@@ -30,21 +30,22 @@ $("#submit").on("click", function(event){
 // We're optionally using a form so the user may hit Enter to search instead of clicking the button
 //if not your button will appear and disappear
 event.preventDefault();
-//taking the user input and making it into a button. Use the trim to remove the white space at the two ends
-var animeAdded = $("#animeShow").val().trim();
+//taking the user input and making it into a button.Use the trim to remove the white space at the two ends.
+var animeAdded = $("#animeShow").val().toUpperCase().trim();
 //taking user input and adding it to the array anime
-//if user did not typed anything anything
+//if user did not typed anything in the input
   if(animeAdded === ""){
     alert("Please enter an anime show");
   }
-//not working trying to prevent repeat entrys  
-  else if (animeAdded == ("#BTN")){
-    alert("Already have that anime enter a different one");
-  }
-  else{
+//Preventing duplicates in array. If it is not in array then add it to the array. 
+  else if (anime.indexOf(animeAdded) == -1){
     anime.push(animeAdded);
 //after adding it to the array call the function to make it into a button in the designated spot
-buttonMaking();
+    buttonMaking();
+  }
+// prevent repeat entrys to be added to array 
+  else{
+    alert("Already have that anime enter a different one");
 }
 //clear the input box after input have been submitted
 $("#animeShow").val("");
@@ -85,7 +86,7 @@ function getGif(){
   	  gifPic.attr("data-state", "still");
   //adding a class to it to idenify the images 
       gifPic.addClass("GIF");
-  //adding a bootstrap class to the new div. Help in not needing to use floats n the css
+  //adding a bootstrap class to the new div. Help in not needing to use floats in the css
       animeDiv.addClass("show col-md-4");
   //adding the text ratings of the gif to the html
       $(animeDiv).append($("<p>").text("Rating: " + results[j].rating));
