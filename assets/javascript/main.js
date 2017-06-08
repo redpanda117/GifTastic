@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-var anime = ["KUROKO NO BASKET","BLACK BUTLER","ATTACK ON TITAN","ASSASSINATION CLASSROOM"];
+var anime = ["KUROKO NO BASKET","BLACK BUTLER","CARDCAPTOR","ASSASSINATION CLASSROOM","INUYASHA","BLUE EXORCIST", "YONA OF THE DAWN","YU YU HAKUSHO", "LOG HORIZON","FAIRY TAIL","MISS KOBAYASHI'S DRAGON MAID","MY LITTLE MONSTER"];
 
 buttonMaking();
 function buttonMaking(){
@@ -93,7 +93,7 @@ function getGif(){
   //this will attach the gif to the assigned area.
       $(animeDiv).append(gifPic);
   //attaching the new div to the designated area
-      $("#theGIF").append(animeDiv);
+      $("#theGIF").prepend(animeDiv);
   }
     buttonMaking();
 });
