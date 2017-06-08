@@ -1,34 +1,38 @@
 $( document ).ready(function() {
-var anime = ["KUROKO NO BASKET","BLACK BUTLER","CARDCAPTOR","ASSASSINATION CLASSROOM","INUYASHA","BLUE EXORCIST", "YONA OF THE DAWN","YU YU HAKUSHO", "LOG HORIZON","FAIRY TAIL","MISS KOBAYASHI'S DRAGON MAID","MY LITTLE MONSTER"];
 
-buttonMaking();
+var anime = ["KUROKO NO BASKET", "BLACK BUTLER", "CARDCAPTOR", "ASSASSINATION CLASSROOM", "INUYASHA", "BLUE EXORCIST", "YONA OF THE DAWN", "YU YU HAKUSHO", "LOG HORIZON", "NIJIIRO DAYS", "MISS KOBAYASHI'S DRAGON MAID", "MY LITTLE MONSTER"];
+
 function buttonMaking(){
 // Delete the content inside the div prior to adding new movies
 // (this is necessary otherwise you will have repeat buttons)
  $("#BTN").empty();
 //for loop for the button already exsisting at the top.
-for(var i = 0; i< anime.length; i++){
+    for(var i = 0; i< anime.length; i++){
 //see if it works
-	console.log("test");
+	   console.log("test");
 //adding the button varaiable and text to corresponding array	
-	var animeBtn = $("<button>");
+	   var animeBtn = $("<button>");
 //anding the shows name onto the buttons 
-  animeBtn.text(anime[i]);
+       animeBtn.text(anime[i]);
 //adding the bootstrap class to each button. 	
-	animeBtn.addClass("btn btn-success");
+	   animeBtn.addClass("btn btn-success");
 // this class will be use to identify the button
-  animeBtn.addClass("animeShows")
+       animeBtn.addClass("animeShows")
 //adding an attribute to the button. It will be call on it in the GIF later
-	animeBtn.attr("data-name", anime[i]);
+	   animeBtn.attr("data-name", anime[i]);
 //attaching the button to the chosen div	
-	$("#BTN").append(animeBtn); 
-}
+	   $("#BTN").append(animeBtn); 
+    }
 }
 
+// calling the function to show the original buttons when the page first load
+buttonMaking();
+    
+//on click function for user to enter thier own show    
 $("#submit").on("click", function(event){
 // Preventing the submit button from trying to submit the form
 // We're optionally using a form so the user may hit Enter to search instead of clicking the button
-//if not your button will appear and disappear
+//if not your button will appear and disappear becuse of default setting
 event.preventDefault();
 //taking the user input and making it into a button.Use the trim to remove the white space at the two ends.
 var animeAdded = $("#animeShow").val().toUpperCase().trim();
@@ -51,7 +55,7 @@ var animeAdded = $("#animeShow").val().toUpperCase().trim();
 $("#animeShow").val("");
 })
 
-
+//this function is for gif images to show up on the page, corresponding to what the user has picked 
 function getGif(){
 //specify the button that the usser pick to run that one not all of them
 	userPick = $(this).attr("data-name");
@@ -61,7 +65,7 @@ function getGif(){
   $.ajax({
       url: queryURL,
       method: "GET"
-//It is a promise when the imformation finally gather that this function will deploy
+//It is a promise when the information finally gather that this function will deploy
     }).done(function(response) {
 //making a variable for the response 	
     var results = response.data;
@@ -92,10 +96,9 @@ function getGif(){
       $(animeDiv).append($("<p>").text("Rating: " + results[j].rating));
   //this will attach the gif to the assigned area.
       $(animeDiv).append(gifPic);
-  //attaching the new div to the designated area
+  //attaching the new div to the designated area.Better to get use to prepend because it will show up at the top.
       $("#theGIF").prepend(animeDiv);
-  }
-    buttonMaking();
+  }  
 });
  }
 
